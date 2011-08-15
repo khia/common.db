@@ -1,0 +1,15 @@
+If you want to use filemaker or any other odbc based backend you need a patched
+version of odbc. The patch implements GET_TABLES function as well as provides
+ability to specify location of odbc port driver via Options passed to application.
+In order to get patched version of odbc you can use following commands. 
+
+sudo apt-get install unixodbc-dev
+git clone git@github.com:khia/otp.git
+cd otp
+./otp_build autoconf
+export ERL_TOP=`pwd`
+./configure  --with-odbc
+cd lib/odbc/
+./configure
+export TARGET=i686-pc-linux-gnu # put you TARGET here
+make
